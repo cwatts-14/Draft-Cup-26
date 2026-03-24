@@ -14,7 +14,12 @@ import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, query, where,
 import firebaseConfig from '../firebase-applet-config.json';
 
 // Initialize Firebase SDK
-const app = initializeApp(firebaseConfig);
+const firebaseConfigWithEnv = {
+  ...firebaseConfig,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || firebaseConfig.apiKey,
+};
+
+const app = initializeApp(firebaseConfigWithEnv);
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
