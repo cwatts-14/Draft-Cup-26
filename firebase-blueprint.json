@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["displayName", "email"]
+    },
+    "League": {
+      "title": "League",
+      "description": "A draft league",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "inviteCode": { "type": "string" },
+        "creatorId": { "type": "string" },
+        "members": { "type": "array", "items": { "type": "string" } },
+        "roles": { 
+          "type": "object",
+          "description": "Mapping of user IDs to roles (admin, member)"
+        },
+        "status": { "type": "string", "enum": ["drafting", "active", "finished"] },
+        "draftType": { "type": "string", "enum": ["snake"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "inviteCode", "creatorId", "members", "roles"]
+    },
+    "Team": {
+      "title": "Team",
+      "description": "A user's team in a league",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "leagueId": { "type": "string" },
+        "picks": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "ownerId", "leagueId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/leagues/{leagueId}": {
+      "schema": "League",
+      "description": "Leagues"
+    },
+    "/leagues/{leagueId}/teams/{userId}": {
+      "schema": "Team",
+      "description": "User teams within a league"
+    }
+  }
+}

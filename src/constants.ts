@@ -44,6 +44,10 @@ export const MOCK_LEAGUES: League[] = [
     currentRank: "1ST PLACE",
     totalPoints: "21.0",
     isLive: true,
+    members: ["user1", "user2", "user3"],
+    roles: { "user1": "admin", "user2": "member", "user3": "member" },
+    status: "drafted",
+    draftType: "snake",
     teams: [
       {
         id: "t1",
@@ -81,6 +85,10 @@ export const MOCK_LEAGUES: League[] = [
     name: "GRIDIRON GHOSTS PREMIER",
     currentRank: "4TH PLACE",
     totalPoints: "15.5",
+    members: [],
+    roles: {},
+    status: "drafting",
+    draftType: "snake",
     teams: [],
   },
   {
@@ -89,6 +97,10 @@ export const MOCK_LEAGUES: League[] = [
     name: "NEURAL NET DRAFT LEAGUE",
     currentRank: "12TH PLACE",
     totalPoints: "12.0",
+    members: [],
+    roles: {},
+    status: "drafting",
+    draftType: "snake",
     teams: [],
   },
 ];

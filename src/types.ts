@@ -6,6 +6,8 @@ export interface Team {
   record: string;
   points: string;
   isUser?: boolean;
+  userId?: string;
+  userName?: string;
   status?: "active" | "eliminated";
   nextMatch?: string;
   stats?: {
@@ -24,5 +26,11 @@ export interface League {
   currentRank: string;
   totalPoints: string;
   isLive?: boolean;
+  creatorId?: string;
+  members: string[];
+  roles: { [uid: string]: 'admin' | 'member' };
+  status: 'waiting' | 'drafting' | 'drafted' | 'finished';
+  draftType: 'snake';
+  createdAt?: any;
   teams: Team[];
 }

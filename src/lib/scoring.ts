@@ -6,7 +6,7 @@ import { Team } from "../types";
  * - Tie (Draw): 1 point
  * - Loss: 0 points
  * - Advance from Group Stage: +1 bonus point
- * - Win Championship: +2 bonus points
+ * - Win Championship: +3 bonus points
  */
 export function calculateTeamPoints(team: Team): number {
   if (!team.stats) return 0;
@@ -20,7 +20,7 @@ export function calculateTeamPoints(team: Team): number {
   }
   
   if (isChampion) {
-    total += 2;
+    total += 3;
   }
   
   return total;
